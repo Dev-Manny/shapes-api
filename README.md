@@ -1,6 +1,7 @@
 # Description of the Shapes Area API and how to set it up
 
-This is a RESTful API for calculating the area of different shapes. Cheers :clinking_glasses:
+This is a RESTful API for calculating the area of different shapes.
+Swagger Documentation https://shapes-dev.herokuapp.com/api-docs/ 
 
 ## Getting Started
 
@@ -111,3 +112,5 @@ Then that means we must edit out Result model to be :
        };
        return Result;
 ```
+
+ Cheers :clinking_glasses:
