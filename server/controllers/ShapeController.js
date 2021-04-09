@@ -88,6 +88,26 @@ class ShapeController {
           console.log(res);
           break;
 
+        // Calculate area of circle
+        case "CIRCLE":
+          const { radius } = req.body.dimensions;
+          if (!radius) return;
+
+          if (!Number.isFinite(radius)) return;
+
+          total = Math.PI * (radius * radius);
+          data = {
+            shape: shape.toUpperCase(),
+            dimension: {
+              radius: radius,
+            },
+            result: total.toFixed(2),
+          };
+
+          await ShapeService.saveCalculation(data);
+          console.log(res);
+          break;
+
         default:
           break;
       }
