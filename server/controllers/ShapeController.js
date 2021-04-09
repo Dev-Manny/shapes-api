@@ -1,11 +1,20 @@
-const { created, badRequest, validationError } = require("../Response/index");
+const {
+  created,
+  badRequest,
+  validationError,
+  unauthorized,
+  success,
+} = require("../Response/index");
 const ShapeService = require("../services/ShapeService");
 class ShapeController {
   static async calculateShape(req, res) {
     let total;
     let data;
+    let user_id = req.userId;
 
     try {
+      if (!user_id) return unauthorized(res, `Unauthorized user`, null);
+
       if (!req.body.shape)
         return badRequest(res, `Please provide the shape`, null);
 
@@ -36,6 +45,7 @@ class ShapeController {
           total = sideA * sideB;
 
           data = {
+            user_id: user_id,
             name: shape,
             dimension: { sideA: sideA, sideB: sideB },
             result: total.toFixed(2),
@@ -64,6 +74,7 @@ class ShapeController {
 
           total = length * breadth;
           data = {
+            user_id: user_id,
             name: shape,
             dimension: { length: length, breadth: breadth },
             result: total.toFixed(2),
@@ -108,6 +119,7 @@ class ShapeController {
           );
 
           data = {
+            user_id: user_id,
             name: shape,
             dimension: {
               length_a: length_a,
@@ -131,6 +143,7 @@ class ShapeController {
 
           total = Math.PI * (radius * radius);
           data = {
+            user_id: user_id,
             name: shape.toUpperCase(),
             dimension: {
               radius: radius,

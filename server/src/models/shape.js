@@ -2,7 +2,12 @@
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Shape extends Model {
-    // TODO:: Implement relationship between user and shape
+    static associte(models) {
+      Shape.belongsTo(models.User, {
+        foreignKey: "user_id",
+        as: "user",
+      });
+    }
   }
   Shape.init(
     {
