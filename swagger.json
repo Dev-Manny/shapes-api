@@ -1,0 +1,226 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Shape API",
+        "description": "API documentation for Shape API",
+        "contact": {
+            "email": "manassehl9@gmail.com"
+        },
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        },
+        "securityDefinitions": {
+            "Bearer": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header",
+                "description": "For accessing the API a valid JWT token must be passed in all the queries in the 'Authorization' header."
+            }
+        }
+    },
+    "host": "https://shapes-dev.herokuapp.com",
+    "basePath": "/api/v1",
+    "tags": [
+        {
+            "name": "User",
+            "description": "API for users in the system"
+        },
+        {
+            "name": "Result",
+            "description": "API for users in the system"
+        }
+    ],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/user/login": {
+            "post": {
+                "summary": "Login user",
+                "tags": [
+                    "User"
+                ],
+                "description": "User login",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "body",
+                        "description": "Login user",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Login Success",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "401": {
+                        "description": "Login details are not valid!!"
+                    },
+                    "404": {
+                        "description": "No user found"
+                    },
+                    "500": {
+                        "description": "User login failed!!"
+                    }
+                }
+            }
+        },
+        "/user/signup": {
+            "post": {
+                "summary": "Register a new user",
+                "tags": [
+                    "User"
+                ],
+                "description": "Register user",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "body",
+                        "description": "Register user",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Registration Successful",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "401": {
+                        "description": "Login details are not valid!!"
+                    },
+                    "404": {
+                        "description": "No user found"
+                    },
+                    "500": {
+                        "description": "User login failed!!"
+                    }
+                }
+            }
+        },
+        "/calculate/": {
+            "post": {
+                "summary": "Calculate shape",
+                "tags": [
+                    "Result"
+                ],
+                "description": "Calculate shape",
+                "parameters": [
+                    {
+                        "name": "shape",
+                        "in": "body",
+                        "description": "calculate shape",
+                        "schema": {
+                            "$ref": "#/definitions/Shape"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "RSuccessful",
+                        "schema": {
+                            "$ref": "#/definitions/Shape"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "404": {
+                        "description": "No user found"
+                    },
+                    "500": {
+                        "description": "User login failed!!"
+                    }
+                }
+            },
+            "get": {
+                "summary": "View results",
+                "tags": [
+                    "Result"
+                ],
+                "description": "Register user",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "body",
+                        "description": "Register user",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Registration Successful",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "401": {
+                        "description": "Login details are not valid!!"
+                    },
+                    "404": {
+                        "description": "No user found"
+                    },
+                    "500": {
+                        "description": "User login failed!!"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "Shape": {
+            "properties": {
+                "shape": {
+                    "type": "string"
+                },
+                "dimension": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
