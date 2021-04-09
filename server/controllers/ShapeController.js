@@ -31,6 +31,29 @@ class ShapeController {
 
           await ShapeService.saveCalculation(data);
           console.log(res);
+          break;
+
+        // Calculate area of rectangle
+        case "RECTANGLE":
+          const { length, breadth } = req.body.dimensions;
+      
+          if (!length || !breadth) return;
+
+          if (!Number.isFinite(length) || !Number.isFinite(breadth)) return;
+
+          total = length * breadth;
+          data = {
+            shape: shape,
+            dimension: { length: length, breadth: breadth },
+            result: total.toFixed(2),
+          };
+
+          await ShapeService.saveCalculation(data);
+
+          console.log(res);
+          break;
+        default:
+          break;
       }
     } catch (error) {
       console.log(error);
