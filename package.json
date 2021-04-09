@@ -1,0 +1,38 @@
+{
+  "name": "shapes-api",
+  "version": "1.0.0",
+  "description": "An api for calculating the area of different shapes.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dev-Manny/shapes-api.git"
+  },
+  "keywords": [
+    "square",
+    "rectangle",
+    "triangle",
+    "circle",
+    "node",
+    "express",
+    "sequelize",
+    "postgreSQL"
+  ],
+  "author": "Manny",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dev-Manny/shapes-api/issues"
+  },
+  "homepage": "https://github.com/Dev-Manny/shapes-api#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "path": "^0.12.7",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.6.2"
+  }
+}
