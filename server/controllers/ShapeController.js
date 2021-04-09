@@ -36,7 +36,7 @@ class ShapeController {
           total = sideA * sideB;
 
           data = {
-            shape: shape,
+            name: shape,
             dimension: { sideA: sideA, sideB: sideB },
             result: total.toFixed(2),
           };
@@ -64,7 +64,7 @@ class ShapeController {
 
           total = length * breadth;
           data = {
-            shape: shape,
+            name: shape,
             dimension: { length: length, breadth: breadth },
             result: total.toFixed(2),
           };
@@ -108,7 +108,7 @@ class ShapeController {
           );
 
           data = {
-            shape: shape,
+            name: shape,
             dimension: {
               length_a: length_a,
               length_b: length_b,
@@ -127,11 +127,11 @@ class ShapeController {
             return badRequest(res, `Please provide the value for radius`, null);
 
           if (!Number.isFinite(radius))
-            return validationError(res, `lradius requires a number`, null);
+            return validationError(res, `radius requires a number`, null);
 
           total = Math.PI * (radius * radius);
           data = {
-            shape: shape.toUpperCase(),
+            name: shape.toUpperCase(),
             dimension: {
               radius: radius,
             },

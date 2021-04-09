@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Shape.init(
     {
-      shape: {
+      name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
