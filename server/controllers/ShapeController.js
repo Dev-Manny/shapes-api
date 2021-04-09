@@ -161,6 +161,19 @@ class ShapeController {
       return badRequest(res, `${error.message}`, null);
     }
   }
+
+  static async getResultByUser(req, res) {
+    let user_id = req.userId;
+
+    if (!user_id) return unauthorized(res, `Unauthorized user`, null);
+
+    try {
+      const results = await ShapeService.getUserResults(user_id);
+      return success(res, `Success`, results);
+    } catch (error) {
+      return badRequest(res, `Unkwown error`, error.message);
+    }
+  }
 }
 
 module.exports = ShapeController;
