@@ -14,8 +14,13 @@ const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+
 class User {
   static async postSignup(req, res) {
     let { name, email, password } = req.body;
+    console.log(name);
+    if (!name) return badRequest(res, `Please provide a name`, null);
+    if (!email) return badRequest(res, `Please provide a email`, null);
+    if (!password) return badRequest(res, `Please provide a passwird`, null);
 
-    if (!name.length) return badRequest(res, `Please provide a name`, null);
+    name = name.trim();
+    email = email.trim();
 
     if (!regex.test(email)) return badRequest(res, `Invalid email!`, null);
 
@@ -25,9 +30,6 @@ class User {
         `Password's length should be between 6 and 32`,
         null
       );
-
-    name = name.trim();
-    email = email.trim();
 
     try {
       const emailExists = await UserService.getUser({
@@ -62,6 +64,9 @@ class User {
   static async postLogin(req, res) {
     let { email, password } = req.body;
     let passwordIsValid;
+    if (!email) return badRequest(res, `Please provide a email`, null);
+    if (!password) return badRequest(res, `Please provide a passwird`, null);
+
     email = email.trim();
 
     try {

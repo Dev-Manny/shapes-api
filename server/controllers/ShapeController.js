@@ -44,6 +44,13 @@ class ShapeController {
 
           total = sideA * sideB;
 
+          if (!total)
+            return badRequest(
+              res,
+              `We cannot provide an answer at the moment`,
+              null
+            );
+
           data = {
             user_id: user_id,
             name: shape,
@@ -68,11 +75,19 @@ class ShapeController {
           if (!Number.isFinite(length) || !Number.isFinite(breadth))
             return validationError(
               res,
-              `"length and breadth requires a number`,
+              `length and breadth requires a number`,
               null
             );
 
           total = length * breadth;
+
+          if (!total)
+            return badRequest(
+              res,
+              `We cannot provide an answer at the moment`,
+              null
+            );
+
           data = {
             user_id: user_id,
             name: shape,
@@ -118,6 +133,13 @@ class ShapeController {
             s * (s - length_a) * (s - length_b) * (s - length_c)
           );
 
+          if (!total)
+            return badRequest(
+              res,
+              `We cannot provide an answer at the moment`,
+              null
+            );
+
           data = {
             user_id: user_id,
             name: shape,
@@ -142,6 +164,14 @@ class ShapeController {
             return validationError(res, `radius requires a number`, null);
 
           total = Math.PI * (radius * radius);
+
+          if (!total)
+            return badRequest(
+              res,
+              `We cannot provide an answer at the moment`,
+              null
+            );
+
           data = {
             user_id: user_id,
             name: shape.toUpperCase(),
@@ -155,7 +185,11 @@ class ShapeController {
           return created(res, `circle calculation saved successfully!"`, data);
 
         default:
-          return badRequest(res, `Bad Request`, null);
+          return badRequest(
+            res,
+            `Shape of area requires triangle, square, rectangle or circle`,
+            null
+          );
       }
     } catch (error) {
       return badRequest(res, `${error.message}`, null);

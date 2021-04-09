@@ -15,8 +15,14 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // when a random route is inputed
 app.get("*", (req, res) =>
-  res.status(200).send({
-    message: "Welcome to this API.",
+  res.status(404).send({
+    message: "You are not allowed to visit here",
+  })
+);
+
+app.post("*", (req, res) =>
+  res.status(404).send({
+    message: "You are not allowed to visit here",
   })
 );
 
