@@ -20,7 +20,7 @@
       "description": "For accessing the API a valid JWT token must be passed in all the queries in the 'Authorization' header."
     }
   },
-  "host": "https://shapes-dev.herokuapp.com",
+  "host": "shapes-dev.herokuapp.com",
   "basePath": "/api/v1",
   "tags": [
     {
